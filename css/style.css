@@ -1,0 +1,756 @@
+/* ============================================================
+   HQHN CRM — Stylesheet
+   HQHN Web Studio | Phiên bản 1.0
+   Thiết kế: Sổ điều phối studio sáng tạo
+============================================================ */
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:    #F5F0E5;
+  --ink:      #27241F;
+  --brick:    #A44329;
+  --beige:    #ECDFC7;
+  --gold:     #C8973A;
+  --silver:   #8A9099;
+  --bronze:   #9B6B3A;
+  --rule:     rgba(39,36,31,.18);
+  --shadow:   rgba(39,36,31,.12);
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 100vh;
+  line-height: 1.65;
+}
+
+h1,h2,h3,h4,h5 { font-family: 'Playfair Display', Georgia, serif; }
+
+a { color: var(--brick); text-decoration: none; }
+
+/* ============================================================
+   TOP HEADER
+============================================================ */
+.top-header {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  width: 38px;
+  height: 38px;
+  border: 2px solid var(--brick);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: .85rem;
+  color: var(--brick);
+  letter-spacing: 1px;
+}
+
+.brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+.brand-sub {
+  font-family: 'Lora', serif;
+  font-size: .7rem;
+  opacity: .6;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: block;
+}
+
+.header-date {
+  font-size: .78rem;
+  opacity: .65;
+  letter-spacing: 1px;
+  text-align: right;
+  font-family: 'Lora', serif;
+}
+
+/* ============================================================
+   NAV TABS
+============================================================ */
+.nav-tabs {
+  background: var(--beige);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-tab {
+  padding: 12px 28px;
+  cursor: pointer;
+  font-family: 'Lora', serif;
+  font-size: .85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ink);
+  opacity: .55;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: all .25s;
+  flex-shrink: 0;
+}
+
+.nav-tab:hover { opacity: .85; }
+
+.nav-tab.active {
+  opacity: 1;
+  border-bottom-color: var(--brick);
+  color: var(--brick);
+}
+
+/* ============================================================
+   SCREEN CONTAINER
+============================================================ */
+.screen { display: none; padding: 32px 24px 60px; max-width: 960px; margin: 0 auto; }
+.screen.active { display: block; }
+
+/* ============================================================
+   UTILITY
+============================================================ */
+.rule { border: none; border-top: 1px solid var(--rule); margin: 24px 0; }
+
+.btn {
+  display: inline-block;
+  padding: 9px 20px;
+  background: var(--brick);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-family: 'Lora', serif;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .8px;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+.btn:hover { background: #8b3621; transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-sm { padding: 6px 14px; font-size: .75rem; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--brick);
+  border: 1.5px solid var(--brick);
+}
+.btn-ghost:hover { background: var(--brick); color: #fff; }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.section-subtitle {
+  font-size: .8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: .5;
+  margin-bottom: 20px;
+}
+
+/* ============================================================
+   RANK BADGES (rubber stamp style)
+============================================================ */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-family: 'Lora', serif;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 2px solid;
+}
+
+.badge-vang  { color: var(--gold);   border-color: var(--gold);   background: rgba(200,151,58,.1); }
+.badge-bac   { color: var(--silver); border-color: var(--silver); background: rgba(138,144,153,.1); }
+.badge-dong  { color: var(--bronze); border-color: var(--bronze); background: rgba(155,107,58,.1); }
+
+/* ============================================================
+   SCREEN 1 — TRANG CHỦ
+============================================================ */
+.home-hero {
+  background: var(--beige);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--brick);
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  border-radius: 2px;
+}
+
+.home-hero p {
+  font-size: .88rem;
+  opacity: .7;
+  margin-top: 4px;
+}
+
+/* Day planner */
+.planner-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.planner-date-badge {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--brick);
+  line-height: 1;
+}
+
+.planner-day-info { font-size: .8rem; opacity: .6; }
+
+.schedule-list { list-style: none; }
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--rule);
+  position: relative;
+}
+
+.schedule-item::before {
+  content: '';
+  position: absolute;
+  left: 56px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brick);
+  transform: translate(-50%, -50%);
+}
+
+.sch-time {
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  font-size: .82rem;
+  color: var(--brick);
+  letter-spacing: .5px;
+  text-align: right;
+  padding-right: 16px;
+}
+
+.sch-info { padding-left: 8px; }
+
+.sch-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.sch-task {
+  font-size: .82rem;
+  opacity: .65;
+  margin-top: 2px;
+}
+
+/* Future directions */
+.future-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.future-card {
+  background: var(--beige);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.future-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--brick);
+  opacity: .4;
+}
+
+.future-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--brick);
+  opacity: .18;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.future-title {
+  font-family: 'Lora', serif;
+  font-size: .88rem;
+  font-weight: 600;
+}
+
+.future-desc { font-size: .78rem; opacity: .6; margin-top: 6px; }
+
+/* ============================================================
+   SCREEN 2 — DANH BẠ
+============================================================ */
+.dir-toolbar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 180px;
+}
+
+.search-wrap input {
+  width: 100%;
+  padding: 10px 16px 10px 38px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--cream);
+  font-family: 'Lora', serif;
+  font-size: .85rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .2s;
+}
+.search-wrap input:focus { border-color: var(--brick); }
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .4;
+  font-size: .9rem;
+}
+
+/* Add-lead form overlay */
+.form-panel {
+  background: var(--beige);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--brick);
+  border-radius: 3px;
+  padding: 24px;
+  margin-bottom: 28px;
+  display: none;
+}
+
+.form-panel.open { display: block; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+
+.form-group label {
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: .6;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 9px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--cream);
+  font-family: 'Lora', serif;
+  font-size: .85rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .2s;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-color: var(--brick); }
+
+.form-actions { margin-top: 18px; display: flex; gap: 10px; }
+
+/* Customer cards */
+.customer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.customer-card {
+  background: var(--beige);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px var(--shadow);
+  transition: box-shadow .2s, transform .2s;
+}
+
+.customer-card:hover { box-shadow: 0 4px 14px var(--shadow); transform: translateY(-2px); }
+
+.card-header {
+  background: var(--ink);
+  color: var(--cream);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--brick);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.card-name-block { flex: 1; padding: 0 12px; }
+
+.card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.card-value { font-size: .72rem; opacity: .6; margin-top: 2px; }
+
+.card-body { padding: 14px 16px; }
+
+.card-meta { font-size: .78rem; opacity: .65; margin-bottom: 4px; }
+.card-meta span { font-weight: 600; opacity: 1; }
+
+/* Timeline */
+.timeline { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--rule); }
+
+.timeline-label {
+  font-size: .68rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: .45;
+  margin-bottom: 8px;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 8px;
+  font-size: .78rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--brick);
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 2.5px;
+  top: 13px;
+  width: 1px;
+  height: calc(100% + 2px);
+  background: var(--rule);
+}
+
+.timeline-item:last-child::after { display: none; }
+
+.tl-date { font-size: .68rem; opacity: .5; }
+.tl-text { opacity: .8; }
+
+.tl-type {
+  display: inline-block;
+  font-size: .62rem;
+  padding: 1px 6px;
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+  opacity: .65;
+  margin-bottom: 2px;
+}
+
+/* ============================================================
+   SCREEN 3 — CHĂM SÓC
+============================================================ */
+.care-form-wrap {
+  background: var(--beige);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 28px;
+  position: relative;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+/* handwritten paper lines */
+.care-form-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 28px 28px 28px 60px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent calc(2.1rem - 1px),
+    rgba(164,67,41,.1) calc(2.1rem - 1px),
+    rgba(164,67,41,.1) 2.1rem
+  );
+  pointer-events: none;
+  border-radius: 2px;
+}
+
+.care-margin {
+  position: absolute;
+  left: 28px;
+  top: 28px;
+  bottom: 28px;
+  width: 28px;
+  border-right: 1.5px solid rgba(164,67,41,.25);
+}
+
+.care-form-inner { position: relative; z-index: 1; }
+
+.care-select-wrap { margin-bottom: 20px; }
+
+.care-select-wrap label {
+  font-size: .75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: .55;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.care-select-wrap select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: rgba(245,240,229,.8);
+  font-family: 'Lora', serif;
+  font-size: .9rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color .2s;
+}
+.care-select-wrap select:focus { border-color: var(--brick); }
+
+.care-field { margin-bottom: 20px; }
+
+.care-field label {
+  font-size: .75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: .55;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.care-field textarea {
+  width: 100%;
+  min-height: 90px;
+  padding: 10px 14px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: rgba(245,240,229,.8);
+  font-family: 'Lora', serif;
+  font-size: .88rem;
+  color: var(--ink);
+  resize: vertical;
+  outline: none;
+  transition: border-color .2s;
+  line-height: 2.1rem; /* match paper lines */
+}
+.care-field textarea:focus { border-color: var(--brick); }
+
+.care-actions { margin-top: 8px; display: flex; gap: 10px; align-items: center; }
+
+.save-flash {
+  font-size: .78rem;
+  color: #3a7d3a;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.save-flash.show { opacity: 1; }
+
+/* ============================================================
+   SURVEY TABLE
+============================================================ */
+.survey-section { margin-top: 40px; }
+
+.survey-table-wrap { overflow-x: auto; }
+
+table.survey-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .82rem;
+  font-family: 'Lora', serif;
+}
+
+table.survey-table thead tr {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+table.survey-table thead th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: .5px;
+  font-size: .75rem;
+}
+
+table.survey-table tbody tr { border-bottom: 1px solid var(--rule); }
+
+table.survey-table tbody tr:nth-child(even) { background: rgba(236,223,199,.35); }
+
+table.survey-table td {
+  padding: 10px 14px;
+  vertical-align: top;
+}
+
+.stars { color: var(--gold); letter-spacing: 1px; }
+
+/* Comments row — smooth CSS transition toggle */
+.comment-row td {
+  padding: 0 !important;
+  background: rgba(164,67,41,.05) !important;
+}
+
+.comment-inner {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease, padding .4s ease;
+  padding: 0 16px;
+  font-size: .82rem;
+  font-style: italic;
+  color: var(--ink);
+  opacity: .75;
+}
+
+.comment-inner.open {
+  max-height: 200px;
+  padding: 12px 16px;
+}
+
+/* ============================================================
+   NOTIFICATIONS / TOAST
+============================================================ */
+#toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: .82rem;
+  font-family: 'Lora', serif;
+  border-left: 4px solid var(--brick);
+  box-shadow: 0 4px 14px rgba(0,0,0,.2);
+  transform: translateY(80px);
+  opacity: 0;
+  transition: transform .3s, opacity .3s;
+  z-index: 999;
+  max-width: 300px;
+}
+
+#toast.show { transform: translateY(0); opacity: 1; }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 600px) {
+  .top-header { padding: 10px 14px; }
+  .brand-name { font-size: 1.1rem; }
+  .nav-tab { padding: 10px 16px; font-size: .75rem; }
+  .screen { padding: 20px 14px 50px; }
+  .schedule-item { grid-template-columns: 56px 1fr; }
+  .schedule-item .btn-sm { grid-column: 2; justify-self: start; margin-top: 4px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .future-grid { grid-template-columns: 1fr; }
+  .care-form-wrap { padding: 16px; }
+  .care-form-wrap::before { inset: 16px 16px 16px 44px; }
+  .care-margin { left: 16px; top: 16px; bottom: 16px; }
+}
+
+@media (max-width: 400px) {
+  .dir-toolbar { flex-direction: column; align-items: stretch; }
+  .dir-toolbar .btn { text-align: center; }
+}
+
+/* ============================================================
+   EMPTY STATE
+============================================================ */
+.empty-state {
+  text-align: center;
+  padding: 48px 20px;
+  opacity: .45;
+  font-style: italic;
+}
